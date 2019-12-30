@@ -30,9 +30,13 @@ const Image = styled.div`
   ${({ isHidden }) =>
     isHidden &&
     css`
-      background-color: black;
+      background-color: rgb(0, 0, 0, 0.45);
       background-size: 0%;
-      border: 10px solid black;
+      border: 10px solid rgb(0, 0, 0, 0.45);
+
+      :hover {
+        box-shadow: 0px 5px 10px 4px rgba(0, 0, 0, 0.45);
+      }
     `};
 
   ${({ hideCursor }) =>

@@ -84,29 +84,47 @@ function App() {
     if (key2 !== null) setTimeout(() => dispatch({ type: "return" }), 1000);
   }, [dispatch, key2]);
 
+  let finish = null;
   if (cards.every(({ picked }) => picked)) {
-    return (
-      <div>
-        <Text>Feliz Aniversario, baby! 😘</Text>
-        <Button onClick={() => dispatch({ type: "reset" })}>GO AGAIN !</Button>
-      </div>
+    finish = (
+      <Container>
+        <div style={{ background: "black", position: `relative` }}>
+          <Text>Feliz Aniversario, baby! 😘</Text>
+          <Button onClick={() => dispatch({ type: "reset" })}>
+            GO AGAIN !
+          </Button>
+        </div>
+      </Container>
     );
   }
+
   return (
-    <Grid>
-      {cards.map(({ id, img, isHidden }, key) => (
-        <Card
-          key={key}
-          src={img}
-          id={id}
-          hideCursor={boardLocked}
-          isHidden={isHidden}
-          onClick={() => dispatch({ type: "pick", id, key })}
-        />
-      ))}
-    </Grid>
+    <>
+      {finish}
+      <Grid>
+        {cards.map(({ id, img, isHidden }, key) => (
+          <Card
+            key={key}
+            src={img}
+            id={id}
+            hideCursor={boardLocked}
+            isHidden={isHidden}
+            onClick={() => dispatch({ type: "pick", id, key })}
+          />
+        ))}
+      </Grid>
+    </>
   );
 }
+
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: grey;
+`;
 
 const Button = styled.button`
   width: 100px;
@@ -122,6 +140,7 @@ const Text = styled.div`
   margin-right: 10px;
   font-weight: 600;
   font-size: 10vh;
+  color: white;
 `;
 
 const Grid = styled.div`
