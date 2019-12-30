@@ -31,7 +31,7 @@ const Image = styled.div`
     isHidden &&
     css`
       background-color: black;
-      filter: opacity(0);
+      background-size: 0%;
       border: 10px solid black;
     `};
 
