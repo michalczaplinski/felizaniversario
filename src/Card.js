@@ -30,7 +30,8 @@ const Image = styled.div`
   ${({ isHidden }) =>
     isHidden &&
     css`
-      background: black;
+      background-color: black;
+      filter: opacity(0);
       border: 10px solid black;
     `};
 
